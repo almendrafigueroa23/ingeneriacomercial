@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malla Curricular Interactiva (Estilo Masculino)</title>
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #e8f0f5, #dde5ea);
+    color: #333;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    color: #2c3e50; /* azul oscuro */
+    margin-bottom: 20px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+  }
+  .nivel {
+    border-radius: 12px;
+    padding: 10px;
+    background-color: #cfd8dc; /* gris azulado claro */
+  }
+  .nivel:nth-child(4n) { background-color: #b0bec5; } /* gris azulado medio */
+  .nivel:nth-child(4n+1) { background-color: #90a4ae; } /* gris azulado más intenso */
+  .nivel:nth-child(4n+2) { background-color: #78909c; } /* gris más oscuro */
+  .nivel:nth-child(4n+3) { background-color: #a7c7c9; } /* verde azulado suave */
+  .nivel h2 {
+    text-align: center;
+    color: #263238; /* gris carbón */
+    margin-bottom: 10px;
+  }
+  .materia {
+    background-color: rgba(255,255,255,0.9);
+    border: 1px solid #90a4ae;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin: 4px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95em;
+  }
+  .materia:hover {
+    background-color: #b0bec5; /* gris azulado medio */
+  }
+  .materia.completada {
+    text-decoration: line-through;
+    background-color: #aed581 !important; /* verde suave para materias aprobadas */
+    color: #444;
+  }
+  .materia.bloqueada {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+</style>
+</head>
+<body>
+
+<h1>Malla Curricular Interactiva</h1>
+
+<div class="grid">
+  <div class="nivel">
+    <h2>Nivel 100</h2>
+    <div class="materia" id="matlogica">Matemática y Pensamiento Lógico</div>
+    <div class="materia" id="contaorg">Contabilidad para las Organizaciones</div>
+    <div class="materia" id="ingles1">Inglés I</div>
+    <div class="materia" id="adminorg">Administración de Organizaciones</div>
+    <div class="materia" id="herradig">Herramientas Digitales para la Gestión</div>
+    <div class="materia" id="cursofg1">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 200</h2>
+    <div class="materia bloqueada" id="matneg1" data-req="matlogica">Matemáticas para los Negocios I</div>
+    <div class="materia bloqueada" id="contafin" data-req="contaorg">Contabilidad Financiera</div>
+    <div class="materia bloqueada" id="ingles2" data-req="ingles1">Inglés II</div>
+    <div class="materia bloqueada" id="funcger" data-req="adminorg">Funciones Gerenciales</div>
+    <div class="materia bloqueada" id="herravanz" data-req="herradig">Herramientas Digitales Avanzadas</div>
+    <div class="materia" id="cursofg2">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 300</h2>
+    <div class="materia bloqueada" id="matneg2" data-req="matneg1">Matemáticas para los Negocios II</div>
+    <div class="materia bloqueada" id="contadec" data-req="contafin">Contabilidad para la Toma de Decisiones</div>
+    <div class="materia bloqueada" id="ingles3" data-req="ingles2">Inglés III</div>
+    <div class="materia" id="analisecon">Análisis Económico</div>
+    <div class="materia" id="derechocom">Derecho Comercial</div>
+    <div class="materia" id="cursofg3">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 400</h2>
+    <div class="materia bloqueada" id="analidatos1" data-req="matneg1">Análisis de Datos I</div>
+    <div class="materia bloqueada" id="analifin" data-req="contaorg">Análisis Financiero</div>
+    <div class="materia bloqueada" id="gestionper" data-req="funcger">Gestión de Personas</div>
+    <div class="materia bloqueada" id="analimicro" data-req="matlogica,analisecon">Análisis Microeconómico</div>
+    <div class="materia" id="derecholab">Derecho Laboral</div>
+    <div class="materia" id="cursofg4">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 500</h2>
+    <div class="materia bloqueada" id="analidatos2" data-req="analidatos1">Análisis de Datos II</div>
+    <div class="materia bloqueada" id="mercap" data-req="analifin">Mercado de Capitales</div>
+    <div class="materia bloqueada" id="gestestraper" data-req="gestionper">Gestión Estratégica de Personas</div>
+    <div class="materia bloqueada" id="microapl" data-req="analimicro">Microeconomía Aplicada</div>
+    <div class="materia bloqueada" id="marketing" data-req="funcger">Marketing</div>
+    <div class="materia" id="cursofg5">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 600</h2>
+    <div class="materia" id="practicainter">Práctica Intermedia</div>
+    <div class="materia bloqueada" id="econometria" data-req="analidatos2">Econometría</div>
+    <div class="materia bloqueada" id="analimacro" data-req="matlogica,analisecon">Análisis Macroeconómico</div>
+    <div class="materia bloqueada" id="investmerc" data-req="marketing,analidatos1">Investigación de Mercado</div>
+    <div class="materia" id="cursofg6">Curso de Formación General</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 700</h2>
+    <div class="materia bloqueada" id="financorp" data-req="mercap">Finanzas Corporativas</div>
+    <div class="materia" id="fundempr">Fundamentos de Emprendimiento</div>
+    <div class="materia bloqueada" id="comportorg" data-req="gestestraper">Comportamiento Organizacional</div>
+    <div class="materia bloqueada" id="macroapl" data-req="analimicro">Macroeconomía Aplicada</div>
+    <div class="materia bloqueada" id="marketestr" data-req="marketing">Marketing Estratégico</div>
+    <div class="materia" id="derechotrib">Derecho Tributario</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 800</h2>
+    <div class="materia bloqueada" id="emprendimiento" data-req="fundempr">Emprendimiento</div>
+    <div class="materia" id="gestioncambio">Gestión del Cambio</div>
+    <div class="materia" id="formulacionproy">Formulación y Evaluación de Proyectos</div>
+    <div class="materia bloqueada" id="habildir" data-req="comportorg">Habilidades Directivas</div>
+    <div class="materia" id="gestoper">Gestión de Operaciones y Procesos</div>
+    <div class="materia" id="gestorgsocial">Gestión de Organizaciones Sociales</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 900</h2>
+    <div class="materia" id="gestestratorg">Gestión Estratégica de Organizaciones</div>
+    <div class="materia bloqueada" id="innosocial" data-req="fundempr">Innovación Social y Emprendimiento</div>
+    <div class="materia" id="controlgest">Control de Gestión</div>
+    <div class="materia" id="eticaorg">Ética en las Organizaciones</div>
+    <div class="materia" id="optativo1">Optativo</div>
+    <div class="materia" id="optativo2">Optativo</div>
+  </div>
+
+  <div class="nivel">
+    <h2>Nivel 1000</h2>
+    <div class="materia" id="practicaprof">Práctica Profesional</div>
+    <div class="materia" id="graduacion">Actividad de Graduación: Juego de Negocios</div>
+  </div>
+</div>
+
+<script>
+const materias = document.querySelectorAll('.materia');
+materias.forEach(materia => {
+  materia.addEventListener('click', () => {
+    if (materia.classList.contains('bloqueada')) return;
+    materia.classList.toggle('completada');
+    materias.forEach(m => {
+      const req = m.getAttribute('data-req');
+      if (req) {
+        const reqs = req.split(',');
+        const allOk = reqs.every(id => document.getElementById(id).classList.contains('completada'));
+        if (allOk) { m.classList.remove('bloqueada'); }
+        else { m.classList.add('bloqueada'); m.classList.remove('completada'); }
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
